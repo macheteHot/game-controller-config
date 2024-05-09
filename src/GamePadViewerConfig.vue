@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import bgImg from './assets/images/bg.jpg'
 import { computed, reactive, ref } from 'vue'
 import { Help } from '@icon-park/vue-next'
 
@@ -161,7 +160,11 @@ function copyUrl() {
 
 <template>
   <el-row
-    :style="{ background: showPreviewBg ? `url(${bgImg})` : previewBgColor }"
+    :style="{
+      background: showPreviewBg
+        ? 'url(https://api.dujin.org/bing/1920.php)'
+        : previewBgColor
+    }"
   >
     <el-col :span="10">
       <el-form class="m-10" label-width="160px">
