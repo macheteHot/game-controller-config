@@ -2,7 +2,7 @@
 import PickColors from 'vue-pick-colors'
 import { computed, reactive, ref } from 'vue'
 import { Help } from '@icon-park/vue-next'
-
+import wechatImg from '@/assets/images/wechat.jpg'
 const previewIframe = ref<HTMLIFrameElement>()
 
 const controllerUrl = new URL(location.href)
@@ -156,7 +156,7 @@ function copyUrl() {
 
 <template>
   <el-row
-    class="w-100vw overflow-auto"
+    class="w-100vw h-100vh overflow-hidden"
     :style="{
       background: showPreviewBg
         ? 'url(https://api.dujin.org/bing/1920.php)'
@@ -166,12 +166,15 @@ function copyUrl() {
       'background-repeat': 'no-repeat'
     }"
   >
-    <el-col :span="10">
+    <el-col :span="10" class="h-100vh overflow-auto">
       <el-form class="m-10" label-width="160px">
         <div class="d-flex flex-direction-column gap-16">
           <el-card>
             <template #header>
-              <h3 class="fs-20">手柄配置</h3>
+              <div class="flex-between-center">
+                <h3 class="fs-20">手柄配置</h3>
+                <p class="c-red fs-24 fw-bolder">请连接上手柄进行调试</p>
+              </div>
             </template>
             <el-row>
               <el-col :span="12">
@@ -559,6 +562,13 @@ function copyUrl() {
                 </el-button>
               </div>
             </el-form-item>
+          </el-card>
+          <el-card>
+            <template #header>
+              <h3 class="fs-20">赞助 Donate</h3>
+            </template>
+            <p class="m-b-8">如果你喜欢的作品 可以请我喝一杯咖啡☕️</p>
+            <img :src="wechatImg" class="w-200" />
           </el-card>
         </div>
       </el-form>
