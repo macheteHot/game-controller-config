@@ -558,7 +558,7 @@ function copyUrl() {
     </el-col>
     <el-col :span="14">
       <div
-        class="pos-absolute z-3 bg-#0000004d t-12 br-8 p-8 d-flex flex-column gap-8"
+        class="pos-fixed z-3 bg-#0000004d t-12 br-8 p-8 d-flex flex-column gap-8"
       >
         <div class="flex-flex-start-center gap-24">
           <p class="c-#FFF fw-bolder fs-18 text-align-right select-none">
