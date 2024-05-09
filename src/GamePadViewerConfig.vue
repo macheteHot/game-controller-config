@@ -1,12 +1,17 @@
 <script setup lang="ts">
+import bgImg from './assets/images/bg.jpg'
 import { computed, reactive, ref } from 'vue'
 import { Help } from '@icon-park/vue-next'
+
 const previewIframe = ref<HTMLIFrameElement>()
 
 const iframeSrc =
   import.meta.env.MODE === 'development'
     ? 'dualsenseView.html'
     : '../dualsenseView.html'
+
+const showPreviewBg = ref(true)
+const previewBgColor = ref('#FFF')
 
 const strokeColor = reactive({
   name: '--stroke-color',
@@ -146,7 +151,9 @@ function copyCssResult() {
 </script>
 
 <template>
-  <el-row>
+  <el-row
+    :style="{ background: showPreviewBg ? `url(${bgImg})` : previewBgColor }"
+  >
     <el-col :span="10">
       <el-form class="m-10" label-width="160px">
         <div class="d-flex flex-direction-column gap-16">
@@ -530,6 +537,27 @@ function copyCssResult() {
       </el-form>
     </el-col>
     <el-col :span="14">
+      <div
+        class="pos-absolute z-3 bg-#0000004d t-12 br-8 p-8 d-flex flex-column gap-8"
+      >
+        <div class="flex-flex-start-center gap-24">
+          <p class="c-#FFF fw-bolder fs-18 text-align-right select-none">
+            背景图
+          </p>
+          <el-switch v-model="showPreviewBg" />
+        </div>
+        <div v-show="!showPreviewBg" class="flex-flex-start-center gap-24">
+          <p class="c-#FFF fw-bolder fs-18 text-align-right select-none">
+            背景色
+          </p>
+          <el-color-picker
+            v-model="previewBgColor"
+            show-alpha
+            size="large"
+            color-format="hex"
+          />
+        </div>
+      </div>
       <div class="pos-fixed h-100vh" style="width: calc(calc(14 / 24) * 100%)">
         <iframe
           ref="previewIframe"
