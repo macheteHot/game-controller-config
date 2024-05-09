@@ -392,6 +392,8 @@ function copyUrl() {
                 <el-form-item label="文字大小">
                   <el-input-number
                     v-model="touchPadTextSize.value"
+                    :step="0.05"
+                    :precision="2"
                     @change="
                       setStyleProperty(
                         touchPadTextSize.name,
