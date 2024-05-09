@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import PickColors from 'vue-pick-colors'
 import { computed, reactive, ref } from 'vue'
 import { Help } from '@icon-park/vue-next'
 
@@ -160,10 +161,14 @@ function copyUrl() {
 
 <template>
   <el-row
+    class="h-100vh w-100vw overflow-auto"
     :style="{
       background: showPreviewBg
         ? 'url(https://api.dujin.org/bing/1920.php)'
-        : previewBgColor
+        : previewBgColor,
+      'background-size': 'cover',
+      'background-position': 'center center',
+      'background-repeat': 'no-repeat'
     }"
   >
     <el-col :span="10">
@@ -176,10 +181,10 @@ function copyUrl() {
             <el-row>
               <el-col :span="12">
                 <el-form-item label="线框颜色">
-                  <el-color-picker
-                    v-model="strokeColor.value"
+                  <pick-colors
+                    v-model:value="strokeColor.value"
+                    :size="30"
                     show-alpha
-                    size="large"
                     @change="
                       setStyleProperty(strokeColor.name, strokeColor.value)
                     "
@@ -188,11 +193,10 @@ function copyUrl() {
               </el-col>
               <el-col :span="12">
                 <el-form-item label="手柄背景色">
-                  <el-color-picker
-                    v-model="bgColor.value"
+                  <pick-colors
+                    v-model:value="bgColor.value"
+                    :size="30"
                     show-alpha
-                    size="large"
-                    color-format="hex"
                     @change="setStyleProperty(bgColor.name, bgColor.value)"
                   />
                 </el-form-item>
@@ -237,11 +241,10 @@ function copyUrl() {
             <el-row>
               <el-col :span="12">
                 <el-form-item label="按钮渐变开始">
-                  <el-color-picker
-                    v-model="buttonStartColor.value"
+                  <pick-colors
+                    v-model:value="buttonStartColor.value"
+                    :size="30"
                     show-alpha
-                    color-format="hex"
-                    size="large"
                     @change="
                       setStyleProperty(
                         buttonStartColor.name,
@@ -253,11 +256,10 @@ function copyUrl() {
               </el-col>
               <el-col :span="12">
                 <el-form-item label="按钮渐变结束">
-                  <el-color-picker
-                    v-model="buttonEndColor.value"
+                  <pick-colors
+                    v-model:value="buttonEndColor.value"
+                    :size="30"
                     show-alpha
-                    color-format="hex"
-                    size="large"
                     @change="
                       setStyleProperty(
                         buttonEndColor.name,
@@ -269,11 +271,10 @@ function copyUrl() {
               </el-col>
               <el-col :span="12">
                 <el-form-item label="摇杆渐变开始">
-                  <el-color-picker
-                    v-model="joystickStartColor.value"
+                  <pick-colors
+                    v-model:value="joystickStartColor.value"
+                    :size="30"
                     show-alpha
-                    color-format="hex"
-                    size="large"
                     @change="
                       setStyleProperty(
                         joystickStartColor.name,
@@ -285,11 +286,10 @@ function copyUrl() {
               </el-col>
               <el-col :span="12">
                 <el-form-item label="摇杆渐变结束">
-                  <el-color-picker
-                    v-model="joystickEndColor.value"
-                    color-format="hex"
+                  <pick-colors
+                    v-model:value="joystickEndColor.value"
+                    :size="30"
                     show-alpha
-                    size="large"
                     @change="
                       setStyleProperty(
                         joystickEndColor.name,
@@ -301,11 +301,10 @@ function copyUrl() {
               </el-col>
               <el-col :span="12">
                 <el-form-item label="摇杆上指向球">
-                  <el-color-picker
-                    v-model="joystickPointColor.value"
-                    color-format="hex"
+                  <pick-colors
+                    v-model:value="joystickPointColor.value"
+                    :size="30"
                     show-alpha
-                    size="large"
                     @change="
                       setStyleProperty(
                         joystickPointColor.name,
@@ -375,11 +374,11 @@ function copyUrl() {
               </el-col>
               <el-col :span="12">
                 <el-form-item label="文字颜色">
-                  <el-color-picker
-                    v-model="touchPadTextColor.value"
+                  <pick-colors
+                    v-model:value="touchPadTextColor.value"
+                    :size="30"
                     color-format="hex"
                     show-alpha
-                    size="large"
                     @change="
                       setStyleProperty(
                         touchPadTextColor.name,
@@ -542,7 +541,7 @@ function copyUrl() {
             </div>
             <el-form-item label="CSS">
               <el-input
-                v-model:model-value="cssResult"
+                v-model="cssResult"
                 readonly
                 type="textarea"
                 rows="10"
@@ -573,18 +572,21 @@ function copyUrl() {
           <p class="c-#FFF fw-bolder fs-18 text-align-right select-none">
             背景色
           </p>
-          <el-color-picker
-            v-model="previewBgColor"
+          <pick-colors
+            v-model:value="previewBgColor"
+            :size="30"
             show-alpha
-            size="large"
             color-format="hex"
           />
         </div>
       </div>
-      <div class="pos-fixed h-100vh" style="width: calc(calc(14 / 24) * 100%)">
+      <div
+        class="pos-fixed h-100vh flex-center-center"
+        style="width: calc(calc(14 / 24) * 100%)"
+      >
         <iframe
           ref="previewIframe"
-          class="square-100p"
+          class="square-90p"
           :src="iframeSrc"
         ></iframe>
       </div>

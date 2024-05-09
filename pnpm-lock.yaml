@@ -13,6 +13,9 @@ dependencies:
   vue:
     specifier: ^3.4.21
     version: 3.4.21(typescript@5.4.2)
+  vue-pick-colors:
+    specifier: ^1.6.5
+    version: registry.npmjs.org/vue-pick-colors@1.6.5(@popperjs/core@2.11.8)(vue@3.4.21)
 
 devDependencies:
   '@rushstack/eslint-patch':
@@ -4414,6 +4417,12 @@ packages:
     version: 1.0.0-next.25
     dev: true
 
+  registry.npmjs.org/@popperjs/core@2.11.8:
+    resolution: {integrity: sha512-P1st0aksCrn9sGZhp8GMYwBnQsbvAWsZAX44oXNNvLHGqAOcoVxmjZiohstwQ7SqKnbR47akdNi+uleWD8+g6A==, registry: https://skimdb.npmjs.com/registry/, tarball: https://registry.npmjs.org/@popperjs/core/-/core-2.11.8.tgz}
+    name: '@popperjs/core'
+    version: 2.11.8
+    dev: false
+
   registry.npmjs.org/@rollup/pluginutils@5.1.0:
     resolution: {integrity: sha512-XTIWOPPcpvyKI6L1NHo0lFlCyznUEyPmPY1mc3KpPVDYulHSTvyeLNVW00QTLIAFNhR3kYnJTQHeGqU4M3n09g==, registry: https://skimdb.npmjs.com/registry/, tarball: https://registry.npmjs.org/@rollup/pluginutils/-/pluginutils-5.1.0.tgz}
     name: '@rollup/pluginutils'
@@ -5977,6 +5986,19 @@ packages:
       escalade: registry.npmjs.org/escalade@3.1.2
       picocolors: registry.npmjs.org/picocolors@1.0.0
     dev: true
+
+  registry.npmjs.org/vue-pick-colors@1.6.5(@popperjs/core@2.11.8)(vue@3.4.21):
+    resolution: {integrity: sha512-0ZwigMYEyNPl9GBD30MtBONf1Z/TIi+m5Qps/mNxE93VJ1KtY8WA8RxyC8+nntAVIX6EtyVv+n7366DLIBbUWQ==, registry: https://skimdb.npmjs.com/registry/, tarball: https://registry.npmjs.org/vue-pick-colors/-/vue-pick-colors-1.6.5.tgz}
+    id: registry.npmjs.org/vue-pick-colors/1.6.5
+    name: vue-pick-colors
+    version: 1.6.5
+    peerDependencies:
+      '@popperjs/core': ^2.11.2
+      vue: ^3.2.26
+    dependencies:
+      '@popperjs/core': registry.npmjs.org/@popperjs/core@2.11.8
+      vue: 3.4.21(typescript@5.4.2)
+    dev: false
 
   registry.npmjs.org/which@2.0.2:
     resolution: {integrity: sha512-BLI3Tl1TW3Pvl70l3yq3Y64i+awpwXqsGBYWkkqMtnbXgrMD+yj7rhW0kuEDxzJaYXGjEW5ogapKNMEKNMjibA==, registry: https://skimdb.npmjs.com/registry/, tarball: https://registry.npmjs.org/which/-/which-2.0.2.tgz}
