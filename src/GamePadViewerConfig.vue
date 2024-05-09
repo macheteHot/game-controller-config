@@ -10,6 +10,10 @@ const iframeSrc =
     ? 'dualsenseView.html'
     : '../dualsenseView.html'
 
+const controllerUrl = new URL(location.href)
+controllerUrl.pathname = iframeSrc
+controllerUrl.search = ''
+
 const showPreviewBg = ref(true)
 const previewBgColor = ref('#FFF')
 
@@ -120,7 +124,8 @@ function setStyleProperty(property: string, value: string | number) {
 }
 
 const cssResult = computed(() => {
-  let str = ':root { \n'
+  let str = 'body{ background-color: rgba(0,0,0,0);}\n'
+  str += ':root { \n'
   str += `  ${strokeColor.name}: ${strokeColor.value};\n`
   str += `  ${bgColor.name}: ${bgColor.value};\n`
   str += `  ${buttonStartColor.name}: ${buttonStartColor.value};\n`
@@ -147,6 +152,10 @@ const cssResult = computed(() => {
 
 function copyCssResult() {
   navigator.clipboard.writeText(cssResult.value)
+}
+
+function copyUrl() {
+  navigator.clipboard.writeText(controllerUrl.toString())
 }
 </script>
 
@@ -518,6 +527,16 @@ function copyCssResult() {
             <template #header>
               <h3 class="fs-20">结果</h3>
             </template>
+            <div class="flex-center-center h-40 m-l-120">
+              <p>
+                控制器地址:<span class="m-l-20">{{
+                  controllerUrl.toString()
+                }}</span>
+              </p>
+              <el-button class="m-l-auto" type="primary" @click="copyUrl">
+                复制
+              </el-button>
+            </div>
             <el-form-item label="CSS">
               <el-input
                 v-model:model-value="cssResult"
@@ -529,8 +548,9 @@ function copyCssResult() {
                 class="m-t-10 m-l-auto"
                 type="primary"
                 @click="copyCssResult"
-                >复制</el-button
               >
+                复制
+              </el-button>
             </el-form-item>
           </el-card>
         </div>
