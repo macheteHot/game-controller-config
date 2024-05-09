@@ -1,0 +1,427 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Game Controller view</title>
+  <script type="module" crossorigin>(function () { const n = document.createElement("link").relList; if (n && n.supports && n.supports("modulepreload")) return; for (const t of document.querySelectorAll('link[rel="modulepreload"]')) l(t); new MutationObserver(t => { for (const m of t) if (m.type === "childList") for (const a of m.addedNodes) a.tagName === "LINK" && a.rel === "modulepreload" && l(a) }).observe(document, { childList: !0, subtree: !0 }); function r(t) { const m = {}; return t.integrity && (m.integrity = t.integrity), t.referrerPolicy && (m.referrerPolicy = t.referrerPolicy), t.crossOrigin === "use-credentials" ? m.credentials = "include" : t.crossOrigin === "anonymous" ? m.credentials = "omit" : m.credentials = "same-origin", m } function l(t) { if (t.ep) return; t.ep = !0; const m = r(t); fetch(t.href, m) } })(); const w = `<svg width="100%" height="100%" viewBox="0 0 526 308" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="button_fill_color" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="var(--button-start-color)" />
+      <stop offset="100%" stop-color="var(--button-end-color)" />
+    </linearGradient>
+    <linearGradient id="l2_linearGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="var(--l2-fill-color,transparent)" />
+      <stop class="l2_linearGradient_stop" offset="0%" stop-color="var(--l2-fill-color,transparent)" />
+      <stop class="l2_linearGradient_stop" offset="0%" stop-color="transparent" />
+      <stop offset="100%" stop-color="transparent" />
+    </linearGradient>
+    <linearGradient id="r2_linearGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="var(--r2-fill-color,transparent)" />
+      <stop class="r2_linearGradient_stop" offset="0%" stop-color="var(--r2-fill-color,transparent)" />
+      <stop class="r2_linearGradient_stop" offset="0%" stop-color="transparent" />
+      <stop offset="100%" stop-color="transparent" />
+    </linearGradient>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <g transform="translate(3 3)">
+      <path
+        fill="var(--bg-color)"
+        d="M212.936 245.475l-1.23.934-1.353.993c-6.284 4.554-22.657 15.6-33.63 15.6l-1.064-.003c-12.284-.08-13.63-1.592-20.612-5.802l-.916-.548c-5.342-3.17-11.31-7.762-17.907-13.78-1.044-1.462-4.394-1.462-10.05 0-5.744 1.487-13.715 11.416-20.932 21.239l-.664.906c-3.198 4.375-6.227 8.678-8.823 12.147-8.593 11.484-19.916 20.947-37.125 25.158-17.21 4.21-49.195-17.758-55.706-55.464-6.38-36.957-1.64-66.988 7.672-98.646l.573-1.931c9.496-31.728 31.698-80.78 35.72-88.997l.222-.45c2.224-4.444 4.934-7.033 8.13-7.768l.936-.17.405-.516c.294-.822.594-1.569.89-2.221.635-1.406 1.875-2.72 3.756-3.99.19-.16.248-.25.282-.348l.031-.103C66.773 23.688 75.747 11.096 88.463 3.94 95.213.14 102.107-.44 107.83.25l.6.061.63.07c.297.035.57.072.843.115 10.278 2.006 17.648 9.813 18.254 11.84 1.137 3.803 2.332 18.552 2.301 27.63l-.01 1.105c-.002.114.422.079.535.067l7.272-.761 2.336-.237c25.59-2.526 64.405-4.12 116.444-4.783L260 35.32l7.755.102c51.222.72 89.218 2.373 113.99 4.956l7.272.76c.113.013.537.048.535-.066l-.01-1.104c-.031-9.08 1.164-23.828 2.3-27.63.607-2.028 7.977-9.835 18.255-11.841.454-.072.91-.126 1.472-.185l.6-.06c5.724-.692 12.618-.11 19.368 3.688 12.544 7.06 21.447 19.408 26.708 37.047l.214.728c.042.148.06.237.313.45 1.881 1.272 3.121 2.585 3.757 3.99.295.653.595 1.4.889 2.222l.405.516.937.17c3.098.713 5.74 3.169 7.925 7.37l.31.612.531 1.094c4.94 10.316 26.097 57.373 35.305 88.139l.289.97c9.5 32.013 14.4 62.277 7.956 99.607-6.511 37.706-38.496 59.675-55.706 55.464-17.21-4.211-28.532-13.674-37.125-25.158-2.596-3.47-5.625-7.772-8.823-12.147l-1.322-1.8c-7.04-9.523-14.704-18.903-20.274-20.344l-.774-.195c-5.189-1.265-8.28-1.2-9.276.195-6.37 5.81-12.153 10.29-17.352 13.446l-1.471.88-3.056 1.862c-4.662 2.807-7.289 3.874-17.556 3.94l-1.064.004c-11.887 0-30.112-12.963-34.982-16.593l-1.231-.934h-94.128z"
+        stroke="var(--stroke-color)" stroke-width="4" stroke-linejoin="round" />
+      <path
+        d="M248.5 42.397h23c1.38 0 3.5 1.12 3.5 2.5a2.5 2.5 0 0 1-2.5 2.5h-25a2.5 2.5 0 0 1-2.5-2.5c0-1.38 2.12-2.5 3.5-2.5zm1.533 195h19.934c1.196 0 3.033-1.12 3.033-2.5s-.97-2.5-2.167-2.5h-21.666c-1.197 0-2.167 1.12-2.167 2.5s1.837 2.5 3.033 2.5z"
+        stroke="var(--stroke-color)" stroke-width="2" />
+      <path
+        d="M390 42.397c-2.196 9.94-8.262 15.588-18.199 16.942l-.447.058c-10.672 1.42-41.685-5.491-109.296-5.89l-2.06-.011-2.058.01c-66.935.396-98 7.173-108.97 5.931l-.326-.04c-10.202-1.244-16.417-6.911-18.646-17"
+        stroke="var(--stroke-color)" stroke-width="2" />
+      <path
+        d="M47.005 57.125c-1.5 9.861-.472 16.366 3.086 19.514 5.336 4.723 17.86 7.661 44.613 3.83 26.752-3.83 44.77-12.557 51.366 10.659 6.596 23.216 15.75 60.784 15.75 64.621 0 3.837 2.403 13.815-17.658 32.329-20.06 18.514-70.894 86.188-87.77 114.835m62.363-232.314c13.95-1.625 22.705 4.178 26.27 17.411M472.242 57.125c1.5 9.861.472 16.366-3.086 19.514-5.336 4.723-17.86 7.661-44.613 3.83-26.752-3.83-44.77-12.557-51.366 10.659-6.596 23.216-15.75 60.784-15.75 64.621 0 3.837-2.403 13.815 17.658 32.329 20.061 18.514 70.894 86.188 87.77 114.835M400.492 70.599c-13.949-1.625-22.705 4.178-26.27 17.411"
+        stroke="var(--stroke-color)" />
+      <path
+        d="M257.521 201.397c1.433.231 2.84.561 4.242.905.803.2 1.602.412 2.397.632 1.247.344 2.49.733 3.62 1.314.506.266.992.567 1.408.933.451.385.82.833 1.09 1.325.492.89.661 1.884.711 2.863.023.638.022 1.282-.116 1.912a4.133 4.133 0 0 1-.657 1.563c-.298.42-.714.784-1.218 1.018a3.627 3.627 0 0 1-1.587.323c-.83.008-1.639-.222-2.386-.523-.009-1.433-.007-2.865-.005-4.298v-2.616a3.09 3.09 0 0 0-.066-.698c-.064-.297-.204-.596-.473-.797a1.475 1.475 0 0 0-.643-.262.714.714 0 0 0-.633.212c-.242.262-.306.61-.316.936-.003 5.753.001 11.506-.003 17.258-1.788-.49-3.577-.982-5.365-1.474-.002-6.842 0-13.684 0-20.526zm11.726 13c1.841.005 3.692.19 5.454.639.345.085.68.195 1.025.284.613.181 1.228.402 1.72.76.295.218.55.512.553.847.017.273-.135.535-.355.737-.415.378-.965.637-1.518.865-.588.242-1.22.398-1.837.583l-11.288 3.285v-2.56c.005-.035-.018-.095.041-.104 2.864-.825 5.727-1.652 8.59-2.48.386-.117.802-.202 1.131-.415.135-.085.266-.22.2-.368-.068-.128-.233-.2-.384-.253-.429-.137-.895-.163-1.35-.173-.715.003-1.435.075-2.113.26-2.04.579-4.075 1.165-6.115 1.742v-2.75c1.476-.42 3.017-.674 4.57-.819.556-.051 1.116-.063 1.676-.08zm-12.785-.68l.001 1.17v1.382c0 .035-.003.07-.008.106-1.875.556-3.746 1.123-5.618 1.683-.26.083-.526.176-.726.342-.093.078-.17.193-.118.304.064.132.225.204.372.258.411.14.86.16 1.297.177.488 0 .975-.043 1.455-.126.324-.053.635-.144.942-.241.8-.243 1.6-.487 2.402-.728l.003.99v1.256a1.463 1.463 0 0 1-.009.132c-.984.147-1.98.247-2.98.26a20.948 20.948 0 0 1-5.947-.75c-.627-.152-1.25-.354-1.774-.69-.289-.186-.547-.421-.678-.712a.838.838 0 0 1 .034-.764c.132-.236.364-.422.617-.567.588-.34 1.237-.6 1.894-.832.566-.202 1.153-.36 1.732-.536 2.37-.704 4.737-1.414 7.11-2.115v.001zM242 188.397c1.657 0 3-1.12 3-2.5s-1.343-2.5-3-2.5-3 1.12-3 2.5 1.343 2.5 3 2.5zm5 7c1.657 0 3-1.12 3-2.5s-1.343-2.5-3-2.5-3 1.12-3 2.5 1.343 2.5 3 2.5zm4.5-7c1.657 0 3-1.12 3-2.5s-1.343-2.5-3-2.5-3 1.12-3 2.5 1.343 2.5 3 2.5zm5 7c1.657 0 3-1.12 3-2.5s-1.343-2.5-3-2.5-3 1.12-3 2.5 1.343 2.5 3 2.5zm4.5-7c1.657 0 3-1.12 3-2.5s-1.343-2.5-3-2.5-3 1.12-3 2.5 1.343 2.5 3 2.5zm5 7c1.657 0 3-1.12 3-2.5s-1.343-2.5-3-2.5-3 1.12-3 2.5 1.343 2.5 3 2.5zm4.5-7c1.657 0 3-1.12 3-2.5s-1.343-2.5-3-2.5-3 1.12-3 2.5 1.343 2.5 3 2.5zm5 7c1.657 0 3-1.12 3-2.5s-1.343-2.5-3-2.5-3 1.12-3 2.5 1.343 2.5 3 2.5zm4.5-7c1.657 0 3-1.12 3-2.5s-1.343-2.5-3-2.5-3 1.12-3 2.5 1.343 2.5 3 2.5z"
+        fill="var(--stroke-color)" fill-rule="nonzero" />
+      <path
+        d="M194.83 179.019c-15.419 0-28.886-10.481-32.747-25.486l-14.125-54.892c-4.127-16.04 5.463-32.408 21.42-36.557a29.7 29.7 0 0 1 6.476-.939c21.074-1.674 49.123-2.511 84.146-2.511s63.072.837 84.146 2.511a29.7 29.7 0 0 1 6.476.94c15.957 4.148 25.547 20.515 21.42 36.556l-14.125 54.892c-3.86 15.005-17.328 25.486-32.746 25.486H194.83z"
+        stroke="var(--stroke-color)" />
+    </g>
+    <g id="setting" transform="matrix(-1 0 0 1 398.907 88.02)" stroke="var(--stroke-color)">
+      <rect transform="rotate(-13 9.145 21.29)" x="2.645" y="8.79" width="13" height="25" rx="6.5" />
+      <rect transform="rotate(-13 9.145 21.29)" x="2.645" y="8.79" width="13" height="25" rx="6.5" />
+      <rect transform="rotate(-13 8.283 22.002)" x="2.783" y="11.002" width="11" height="22" rx="5.5" />
+      <path d="M10.37 0H3.04m7.33 3H3.04m7.33 3H3.04" />
+    </g>
+    <g id="share" transform="translate(127.617 88.246)" stroke="var(--stroke-color)">
+      <rect transform="rotate(-13 9.145 21.064)" x="2.645" y="8.564" width="13" height="25" rx="6.5" />
+      <rect transform="rotate(-13 9.145 21.064)" x="2.645" y="8.564" width="13" height="25" rx="6.5" />
+      <rect transform="rotate(-13 8.283 21.776)" x="2.783" y="10.776" width="11" height="22" rx="5.5" />
+      <path d="M1.564 2.764l1.938 2.904m7.881-3.517L9.424 5.668M6.358 0v4.69" />
+    </g>
+    <path
+      d="M170.282 153.076l-14.375-56.892C152 80.727 157.08 68.956 172.19 64.958c2.005-.53 9.062-.834 11.132-.904 19.955-1.614 46.514-2.42 79.678-2.42 33.164 0 59.723.806 79.678 2.42 2.07.07 9.127.374 11.132.904 15.11 3.998 20.191 15.77 16.283 31.226l-14.375 56.892c-3.656 14.459-16.408 24.558-31.007 24.558H201.29c-14.599 0-27.35-10.1-31.007-24.558z"
+      id="touch_pad" stroke="var(--stroke-color)" fill-rule="nonzero" />
+    <g opacity="var(--touch_pad_dot_opacity)" transform="translate(166 69)" stroke="var(--stroke-color)">
+      <path
+        d="M1.5 6a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm32-1a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm32-1a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM11 3L8 6m3 0L8 3m35-1l-3 3m3 0l-3-3m35-1l-3 3m3 0l-3-3M16.077 3H19l-.077 3H16l.077-3zm32-1H51l-.077 3H48l.077-3zm32-1H83l-.077 3H80l.077-3zm-54.48 2L24 6h3l-1.403-3zm32-1L56 5h3l-1.403-3zm32-1L88 4h3l-1.403-3zM97.5 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm9.5-2l-3 3m3 0l-3-3m8.077 0H115l-.077 3H112l.077-3zm9.52 0L120 4h3l-1.403-3zm7.903 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm9.5-2l-3 3m3 0l-3-3m8.077 0H147l-.077 3H144l.077-3zm9.52 0L152 5h3l-1.403-3zm7.903 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm32 1a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM171 3l-3 3m3 0l-3-3m8.077 0H179l-.077 3H176l.077-3zm9.52 0L184 6h3l-1.403-3z" />
+      <path
+        d="M1.5 6a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm32-1a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm32-1a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM11 3L8 6m3 0L8 3m35-1l-3 3m3 0l-3-3m35-1l-3 3m3 0l-3-3M16.077 3H19l-.077 3H16l.077-3zm32-1H51l-.077 3H48l.077-3zm32-1H83l-.077 3H80l.077-3zm-54.48 2L24 6h3l-1.403-3zm32-1L56 5h3l-1.403-3zm32-1L88 4h3l-1.403-3zM97.5 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm9.5-2l-3 3m3 0l-3-3m8.077 0H115l-.077 3H112l.077-3zm9.52 0L120 4h3l-1.403-3zm7.903 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm9.5-2l-3 3m3 0l-3-3m8.077 0H147l-.077 3H144l.077-3zm9.52 0L152 5h3l-1.403-3zm7.903 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm32 1a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM171 3l-3 3m3 0l-3-3m8.077 0H179l-.077 3H176l.077-3zm9.52 0L184 6h3l-1.403-3z" />
+      <path
+        d="M1.5 6a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm32-1a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm32-1a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM11 3L8 6m3 0L8 3m35-1l-3 3m3 0l-3-3m35-1l-3 3m3 0l-3-3M16.077 3H19l-.077 3H16l.077-3zm32-1H51l-.077 3H48l.077-3zm32-1H83l-.077 3H80l.077-3zm-54.48 2L24 6h3l-1.403-3zm32-1L56 5h3l-1.403-3zm32-1L88 4h3l-1.403-3zM97.5 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm9.5-2l-3 3m3 0l-3-3m8.077 0H115l-.077 3H112l.077-3zm9.52 0L120 4h3l-1.403-3zm7.903 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm9.5-2l-3 3m3 0l-3-3m8.077 0H147l-.077 3H144l.077-3zm9.52 0L152 5h3l-1.403-3zm7.903 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm32 1a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM171 3l-3 3m3 0l-3-3m8.077 0H179l-.077 3H176l.077-3zm9.52 0L184 6h3l-1.403-3zM5.5 37a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm31 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm30 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM15 34l-3 3m3 0l-3-3m33 0l-3 3m3 0l-3-3m34 0l-3 3m3 0l-3-3m-53.923 0H22l-.077 3H19l.077-3zm31 0H53l-.077 3H50l.077-3zm31 0H84l-.077 3H81l.077-3zm-52.48 0L27 37h3l-1.403-3zm31 0L58 37h3l-1.403-3zm30 0L88 37h3l-1.403-3zm7.903 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm9.5-3l-3 3m3 0l-3-3m7.077 0H114l-.077 3H111l.077-3zm9.52 0L119 37h3l-1.403-3zm7.903 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm8.5-3l-3 3m3 0l-3-3m8.077 0H145l-.077 3H142l.077-3zm9.52 0L150 37h3l-1.403-3zm6.903 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm31 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM168 34l-3 3m3 0l-3-3m8.077 0H176l-.077 3H173l.077-3zm8.52 0L180 37h3l-1.403-3z" />
+      <path
+        d="M11.5 69a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm29 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm28 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM20 66l-3 3m3 0l-3-3m32 0l-3 3m3 0l-3-3m32 0l-3 3m3 0l-3-3m-50.923 0H27l-.077 3H24l.077-3zm29 0H56l-.077 3H53l.077-3zm29 0H85l-.077 3H82l.077-3zm-48.48 0L32 69h3l-1.403-3zm28 0L60 69h3l-1.403-3zm29 0L89 69h3l-1.403-3zm6.903 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm8.5-3l-3 3m3 0l-3-3m7.077 0H113l-.077 3H110l.077-3zm9.52 0L118 69h3l-1.403-3zm6.903 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm8.5-3l-3 3m3 0l-3-3m7.077 0H142l-.077 3H139l.077-3zm8.52 0L146 69h3l-1.403-3zm6.903 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm29 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM164 66l-3 3m3 0l-3-3m7.077 0H171l-.077 3H168l.077-3zm8.52 0L175 69h3l-1.403-3z" />
+      <path
+        d="M22.5 101a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm25 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm25 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM30 98l-3 3m3 0l-3-3m28 0l-3 3m3 0l-3-3m28 0l-3 3m3 0l-3-3m-42.923 0H37l-.077 3H34l.077-3zm25 0H62l-.077 3H59l.077-3zm25 0H87l-.077 3H84l.077-3zm-42.48 0L40 101h3l-1.403-3zm25 0L65 101h3l-1.403-3zm25 0L90 101h3l-1.403-3zm5.903 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm7.5-3l-3 3m3 0l-3-3m7.077 0H112l-.077 3H109l.077-3zm7.52 0L115 101h3l-1.403-3zm5.903 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm7.5-3l-3 3m3 0l-3-3m7.077 0H137l-.077 3H134l.077-3zm7.52 0L140 101h3l-1.403-3zm5.903 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm25 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM155 98l-3 3m3 0l-3-3m7.077 0H162l-.077 3H159l.077-3zm7.52 0L165 101h3l-1.403-3zM26.5 13a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm31 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM4 10l-3 3m3 0l-3-3m35 0l-3 3m3 0l-3-3m34 0l-3 3m3 0l-3-3M9.077 10H12l-.077 3H9l.077-3zm32 0H44l-.077 3H41l.077-3zm31 0H75l-.077 3H72l.077-3zm-53.48 0L17 13h3l-1.403-3zm32 0L49 13h3l-1.403-3zm31 0L80 13h3l-1.403-3zm7.903 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm9.5-3l-3 3m3 0l-3-3m8.077 0H107l-.077 3H104l.077-3zm9.52 0L112 13h3l-1.403-3zm7.903 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm9.5-3l-3 3m3 0l-3-3m8.077 0H139l-.077 3H136l.077-3zm9.52 0L144 13h3l-1.403-3zm6.903 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm32 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM162 10l-3 3m3 0l-3-3m35 0l-3 3m3 0l-3-3m-23.923 0H170l-.077 3H167l.077-3zm9.52 0L175 13h3l-1.403-3zM29.5 45a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm30 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM8 42l-3 3m3 0l-3-3m33 0l-3 3m3 0l-3-3m34 0l-3 3m3 0l-3-3m-52.923 0H16l-.077 3H13l.077-3zm30 0H46l-.077 3H43l.077-3zm30 0H76l-.077 3H73l.077-3zm-51.48 0L20 45h3l-1.403-3zm30 0L50 45h3l-1.403-3zm31 0L81 45h3l-1.403-3zm6.903 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm9.5-3l-3 3m3 0l-3-3m8.077 0H107l-.077 3H104l.077-3zm8.52 0L111 45h3l-1.403-3zm7.903 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm8.5-3l-3 3m3 0l-3-3m8.077 0H137l-.077 3H134l.077-3zm8.52 0L141 45h3l-1.403-3zm7.903 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm30 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM160 42l-3 3m3 0l-3-3m33 0l-3 3m3 0l-3-3m-22.923 0H167l-.077 3H164l.077-3zm9.52 0L172 45h3l-1.403-3zM34.5 77a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm28 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM15 74l-3 3m3 0l-3-3m31 0l-3 3m3 0l-3-3m31 0l-3 3m3 0l-3-3m-48.923 0H22l-.077 3H19l.077-3zm28 0H50l-.077 3H47l.077-3zm28 0H78l-.077 3H75l.077-3zm-47.48 0L26 77h3l-1.403-3zm28 0L54 77h3l-1.403-3zm28 0L82 77h3l-1.403-3zm6.903 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm8.5-3l-3 3m3 0l-3-3m7.077 0H106l-.077 3H103l.077-3zm8.52 0L110 77h3l-1.403-3zm6.903 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm8.5-3l-3 3m3 0l-3-3m7.077 0H134l-.077 3H131l.077-3zm8.52 0L138 77h3l-1.403-3zm6.903 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm28 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM155 74l-3 3m3 0l-3-3m31 0l-3 3m3 0l-3-3m-20.923 0H162l-.077 3H159l.077-3zm8.52 0L166 77h3l-1.403-3z" />
+      <path
+        d="M19.5 21a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm31 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM28 18l-3 3m3 0l-3-3m35 0l-3 3m3 0l-3-3M2.077 18H5l-.077 3H2l.077-3zm31 0H36l-.077 3H33l.077-3zm32 0H68l-.077 3H65l.077-3zm-53.48 0L10 21h3l-1.403-3zm31 0L41 21h3l-1.403-3zm31 0L72 21h3l-1.403-3zm7.903 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm9.5-3l-3 3m3 0l-3-3m8.077 0H99l-.077 3H96l.077-3zm9.52 0L104 21h3l-1.403-3zm7.903 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm8.5-3l-3 3m3 0l-3-3m8.077 0H130l-.077 3H127l.077-3zm9.52 0L135 21h3l-1.403-3zm7.903 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm31 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM154 18l-3 3m3 0l-3-3m34 0l-3 3m3 0l-3-3m-22.923 0H162l-.077 3H159l.077-3zm31 0H193l-.077 3H190l.077-3zm-22.48 0L166 21h3l-1.403-3z" />
+      <path
+        d="M23.5 53a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm30 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM32 50l-3 3m3 0l-3-3m33 0l-3 3m3 0l-3-3M7.077 50H10l-.077 3H7l.077-3zm30 0H40l-.077 3H37l.077-3zm29 0H69l-.077 3H66l.077-3zm-50.48 0L14 53h3l-1.403-3zm30 0L44 53h3l-1.403-3zm30 0L74 53h3l-1.403-3zm6.903 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm9.5-3l-3 3m3 0l-3-3m7.077 0H99l-.077 3H96l.077-3zm8.52 0L103 53h3l-1.403-3zm7.903 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm8.5-3l-3 3m3 0l-3-3m8.077 0H129l-.077 3H126l.077-3zm8.52 0L133 53h3l-1.403-3zm7.903 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm29 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM151 50l-3 3m3 0l-3-3m33 0l-3 3m3 0l-3-3m-22.923 0H158l-.077 3H155l.077-3zm30 0H188l-.077 3H185l.077-3zm-20.48 0L163 53h3l-1.403-3z" />
+      <path
+        d="M29.5 85a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm27 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM37 82l-3 3m3 0l-3-3m31 0l-3 3m3 0l-3-3m-47.923 0H17l-.077 3H14l.077-3zm27 0H44l-.077 3H41l.077-3zm28 0H72l-.077 3H69l.077-3zm-46.48 0L21 85h3l-1.403-3zm27 0L48 85h3l-1.403-3zm27 0L75 85h3l-1.403-3zm6.903 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm8.5-3l-3 3m3 0l-3-3m7.077 0H99l-.077 3H96l.077-3zm8.52 0L103 85h3l-1.403-3zm6.903 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm7.5-3l-3 3m3 0l-3-3m7.077 0H126l-.077 3H123l.077-3zm8.52 0L130 85h3l-1.403-3zm6.903 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm27 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM147 82l-3 3m3 0l-3-3m30 0l-3 3m3 0l-3-3m-19.923 0H154l-.077 3H151l.077-3zm27 0H181l-.077 3H178l.077-3zm-19.48 0L157 85h3l-1.403-3z" />
+      <path
+        d="M12.5 29a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm31 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM22 26l-3 3m3 0l-3-3m34 0l-3 3m3 0l-3-3m-23.923 0H29l-.077 3H26l.077-3zm31 0H60l-.077 3H57l.077-3zm-52.48 0L3 29h3l-1.403-3zm31 0L34 29h3l-1.403-3zm31 0L65 29h3l-1.403-3zm7.903 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm9.5-3l-3 3m3 0l-3-3m7.077 0H91l-.077 3H88l.077-3zm9.52 0L96 29h3l-1.403-3zm7.903 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm9.5-3l-3 3m3 0l-3-3m7.077 0H122l-.077 3H119l.077-3zm9.52 0L127 29h3l-1.403-3zm7.903 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm31 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM146 26l-3 3m3 0l-3-3m34 0l-3 3m3 0l-3-3m-23.923 0H153l-.077 3H150l.077-3zm31 0H184l-.077 3H181l.077-3zm-21.48 0L158 29h3l-1.403-3zm31 0L189 29h3l-1.403-3z" />
+      <path
+        d="M17.5 61a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm29 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM27 58l-3 3m3 0l-3-3m32 0l-3 3m3 0l-3-3m-21.923 0H34l-.077 3H31l.077-3zm29 0H63l-.077 3H60l.077-3zm-49.48 0L9 61h3l-1.403-3zm29 0L38 61h3l-1.403-3zm29 0L67 61h3l-1.403-3zm6.903 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm9.5-3l-3 3m3 0l-3-3m7.077 0H92l-.077 3H89l.077-3zm8.52 0L96 61h3l-1.403-3zm6.903 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm9.5-3l-3 3m3 0l-3-3m7.077 0H121l-.077 3H118l.077-3zm8.52 0L125 61h3l-1.403-3zm6.903 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm29 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM143 58l-3 3m3 0l-3-3m32 0l-3 3m3 0l-3-3m-21.923 0H150l-.077 3H147l.077-3zm29 0H179l-.077 3H176l.077-3zm-20.48 0L154 61h3l-1.403-3zm29 0L183 61h3l-1.403-3z" />
+      <path
+        d="M25.5 93a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm26 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM33 90l-3 3m3 0l-3-3m29 0l-3 3m3 0l-3-3m-18.923 0H40l-.077 3H37l.077-3zm26 0H66l-.077 3H63l.077-3zm-44.48 0L17 93h3l-1.403-3zm26 0L43 93h3l-1.403-3zm27 0L70 93h3l-1.403-3zm5.903 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm8.5-3l-3 3m3 0l-3-3m6.077 0H92l-.077 3H89l.077-3zm8.52 0L96 93h3l-1.403-3zm6.903 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm7.5-3l-3 3m3 0l-3-3m7.077 0H119l-.077 3H116l.077-3zm7.52 0L122 93h3l-1.403-3zm6.903 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm26 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM138 90l-3 3m3 0l-3-3m30 0l-3 3m3 0l-3-3m-19.923 0H145l-.077 3H142l.077-3zm26 0H171l-.077 3H168l.077-3zm-17.48 0L149 93h3l-1.403-3zm26 0L175 93h3l-1.403-3z" />
+    </g><text transform="translate(179 129.241)" id="disconnected" fill="#FFF" fill-rule="nonzero"
+      font-family="PingFangSC-Regular, PingFang SC" font-size="27">
+      <tspan x="0" y="0">disconnected</tspan>
+    </text>
+    <g transform="translate(392.27 3.08)" stroke="var(--stroke-color)" stroke-width="2">
+      <g transform="matrix(-1 0 0 1 69.271 0)">
+        <path
+          d="M64.64 26.172c.135 3.09.397 5.647.785 7.67.469 2.445 1.493 6.59 3.073 12.433 1.195-5.211-.393-28.958-1.882-33.937C66.01 10.31 58.64 2.503 48.362.497"
+          stroke-linejoin="round" />
+        <path
+          d="M1.685 36.317C17.665 26.152 38.649 22.77 64.64 26.172c.066 1.52.57-6.26.514-11.41-.022-2.05-.382-3.723-.515-4.166-.482-1.611-2.324-3.464-5.397-5.473C56.727 3.479 53.376 1.6 49.376.761 43.156-.544 34.936-.571 26.922 3.94 14.206 11.096 5.232 23.688 0 41.715"
+          id="r2" stroke-linejoin="round" />
+        <g transform="matrix(-1 0 0 1 60.079 15.317)">
+          <path d="M0 0h5v3H0V0zm0 3v3m2.5-3L5 6" />
+          <path stroke-linecap="square" d="M8.482 0h4.673v2.5H8.482V5h4.673" />
+        </g>
+      </g>
+      <g transform="matrix(-1 0 0 1 76.924 30.273)">
+        <g>
+          <path
+            d="M3.663 15.882C1.408 20.865-1.1 31.362.513 38.692c1.61 7.332 12.172 8.695 34.337 6.858 22.165-1.837 35.188-5.64 37.684-9.1 2.495-3.46 5.71-10.525 3.82-19.128C74.462 8.72 73.642 2.176 71.41 2.176c-2.232 0-17.47-4.897-36.56 0C15.76 7.073 5.916 10.9 3.662 15.882z"
+            id="r1" />
+          <path
+            d="M1.62 21.99c.775 7.918 7.458 11.263 20.047 10.036 18.883-1.842 39.494-5.21 44.71-10.035 5.215-4.825 6.477-11.806 5.846-19.138" />
+        </g>
+        <path d="M63.732 5.043h-5v3h5v-3zm-.01 2v3M61.32 7.734l-2.088 2.31m-3.5-5h-3v5" />
+      </g>
+    </g>
+    <g transform="translate(56.808 3.08)" stroke="var(--stroke-color)" stroke-width="2">
+      <g transform="translate(7.733)">
+        <path
+          d="M64.64 26.172c.135 3.09.397 5.647.785 7.67.469 2.445 1.493 6.59 3.073 12.433 1.195-5.211-.393-28.958-1.882-33.937C66.01 10.31 58.64 2.503 48.362.497"
+          stroke-linejoin="round" />
+        <path
+          d="M1.685 36.317C17.665 26.152 38.649 22.77 64.64 26.172c.066 1.52.57-6.26.514-11.41-.022-2.05-.382-3.723-.515-4.166-.482-1.611-2.324-3.464-5.397-5.473C56.727 3.479 53.376 1.6 49.376.761 43.156-.544 34.936-.571 26.922 3.94 14.206 11.096 5.232 23.688 0 41.715"
+          id="l2" stroke-linejoin="round" />
+        <g>
+          <path d="M49.459 15.317v6h3.834" />
+          <path stroke-linecap="square" d="M55.459 16.317h4.673v2.5h-4.673v2.5h4.673" />
+        </g>
+      </g>
+      <g transform="translate(0 30.273)">
+        <g>
+          <path
+            d="M3.663 15.882C1.408 20.865-1.1 31.362.513 38.692c1.61 7.332 12.172 8.695 34.337 6.858 22.165-1.837 35.188-5.64 37.684-9.1 2.495-3.46 5.71-10.525 3.82-19.128C74.462 8.72 73.642 2.176 71.41 2.176c-2.232 0-17.47-4.897-36.56 0C15.76 7.073 5.916 10.9 3.662 15.882z"
+            id="l1" />
+          <path
+            d="M1.62 21.99c.775 7.918 7.458 11.263 20.047 10.036 18.883-1.842 39.494-5.21 44.71-10.035 5.215-4.825 6.477-11.806 5.846-19.138" />
+        </g>
+        <g transform="translate(55.192 3.043)">
+          <path d="M0 0v5h3.834M5 1h3v5" />
+        </g>
+      </g>
+    </g>
+    <g transform="translate(137 186)" stroke="var(--stroke-color)">
+      <path
+        d="M41.001 0c11.331 0 21.59 4.149 29.02 10.863C77.415 17.552 82 26.79 82 37s-4.584 19.448-11.982 26.137C62.592 69.851 52.331 74 40.998 74c-11.33 0-21.59-4.149-29.018-10.863C4.585 56.448 0 47.21 0 37s4.584-19.448 11.982-26.137C19.408 4.149 29.669 0 41.002 0h-.001zm-.119 9.5c-9.04-.001-17.223 3.182-23.147 8.318C11.78 22.984 8.105 30.122 8.105 38c0 7.877 3.675 15.015 9.63 20.18 5.924 5.137 14.106 8.319 23.147 8.319 9.04 0 17.223-3.182 23.147-8.32 5.956-5.164 9.63-12.302 9.63-20.18 0-7.877-3.674-15.015-9.63-20.18C58.105 12.682 49.923 9.5 40.882 9.5z"
+        id="l3_ring" />
+    </g>
+    <g id="left_joystick">
+      <g transform="translate(146.886 207.851)">
+        <g stroke="var(--stroke-color)">
+          <ellipse stroke-width="2" cx="29.376" cy="27.65" rx="29.376" ry="27.65" />
+          <ellipse cx="29.376" cy="32.258" rx="21.779" ry="18.433" />
+        </g>
+        <ellipse id="left_joystick_point" cx="29.376" cy="36.355" rx="8.104" ry="7.681" />
+      </g>
+    </g>
+    <g transform="translate(308 186)" stroke="var(--stroke-color)">
+      <path
+        d="M41.001 0c11.331 0 21.59 4.149 29.02 10.863C77.415 17.552 82 26.79 82 37s-4.584 19.448-11.982 26.137C62.592 69.851 52.331 74 40.998 74c-11.33 0-21.59-4.149-29.018-10.863C4.585 56.448 0 47.21 0 37s4.584-19.448 11.982-26.137C19.408 4.149 29.669 0 41.002 0h-.001zm-.119 9.499c-9.04 0-17.223 3.183-23.147 8.32-5.955 5.165-9.63 12.303-9.63 20.18 0 7.878 3.675 15.016 9.63 20.18 5.924 5.138 14.106 8.32 23.147 8.32 9.04 0 17.223-3.182 23.147-8.32 5.956-5.164 9.63-12.302 9.63-20.18 0-7.877-3.674-15.015-9.63-20.18C58.105 12.682 49.923 9.5 40.882 9.5v-.001z"
+        id="r3_ring" />
+    </g>
+    <g id="right_joystick">
+
+      <g transform="translate(318.285 206.95)">
+        <g stroke="var(--stroke-color)">
+          <ellipse stroke-width="2" cx="29.376" cy="27.65" rx="29.376" ry="27.65" />
+          <ellipse cx="29.376" cy="32.258" rx="21.779" ry="18.433" />
+        </g>
+        <ellipse id="right_joystick_point" cx="29.376" cy="36.355" rx="8.104" ry="7.681" />
+      </g>
+    </g>
+
+    <g transform="translate(376 111)" fill-rule="nonzero" stroke="var(--stroke-color)">
+      <g id="button_left" transform="translate(0 35)">
+        <path d="M35 15.512C35 6.946 27.164 0 17.5 0S0 6.946 0 15.512" />
+        <ellipse cx="17.5" cy="17.453" rx="17.5" ry="14.547" />
+        <path d="M8.218 9.481h16.527L24.3 24.033H7.78z" />
+      </g>
+      <g id="button_bottom" transform="translate(36 69)">
+        <path d="M35 15.512C35 6.946 27.164 0 17.5 0S0 6.946 0 15.512" />
+        <ellipse cx="17.5" cy="17.453" rx="17.5" ry="14.547" />
+        <path d="M25.61 9.695L10.007 22.737m15.605 0L10.006 9.695" />
+      </g>
+      <g id="button_right" transform="translate(77 35)">
+        <path d="M35 15.512C35 6.946 27.164 0 17.5 0S0 6.946 0 15.512" />
+        <ellipse cx="17.5" cy="17.453" rx="17.5" ry="14.547" />
+        <ellipse cx="17.5" cy="16" rx="9.721" ry="8.241" />
+      </g>
+      <g id="button_top" transform="translate(39)">
+        <path d="M35 17.486C35 7.83 27.165 0 17.5 0S0 7.829 0 17.486" />
+        <ellipse cx="17.5" cy="18.458" rx="17.5" ry="15.542" />
+        <path d="M17.5 7.875L7.092 22.872H26.64z" />
+      </g>
+    </g>
+    <g transform="translate(53 123)" fill-rule="nonzero" stroke="var(--stroke-color)">
+      <path
+        d="M.005 46.37L0 30.893C0 27.085 3.012 24 6.728 24l14.907.583a7.616 7.616 0 0 1 5.54 2.745l6.667 7.966a5.014 5.014 0 0 1 0 6.407l-6.668 7.976a7.622 7.622 0 0 1-5.54 2.745l-14.65.573c-3.71.145-6.834-2.818-6.979-6.62v-.005zm0-12.516c1.929-3.22 3.661-4.968 5.202-5.257 1.435-.263 6.461-.119 15.083.433a7.58 7.58 0 0 1 3.742 1.28c4.21 2.837 7.866 5.778 10.968 8.817m-29.994 1.62l3.842-3.931v7.878l-3.842-3.947z"
+        id="dpad_left" />
+      <g id="dpad_bottom" transform="translate(28 42)">
+        <path
+          d="M6.63 33h15.481c3.581 0 6.528-2.663 6.863-6.066l.026-.773-.578-12.825a7.6 7.6 0 0 0-2.745-5.528l-7.978-6.653a5.023 5.023 0 0 0-6.409 0L3.328 7.808a7.6 7.6 0 0 0-2.745 5.528L.005 26.03a6.613 6.613 0 0 0 1.83 4.822A6.974 6.974 0 0 0 6.631 33z" />
+        <path
+          d="M.8 15.341l10.212-10a4.99 4.99 0 0 1 3.49-1.414 4.99 4.99 0 0 1 3.491 1.414l10.218 10m-13.7 9.985l3.931-3.834h-7.88l3.948 3.834z" />
+      </g>
+      <path
+        d="M49.005 46.37L49 30.893c0-3.586 2.67-6.527 6.078-6.862L55.86 24l14.77.583a7.618 7.618 0 0 1 5.545 2.745l6.668 7.966a5.014 5.014 0 0 1 0 6.407l-6.668 7.976a7.622 7.622 0 0 1-5.54 2.745l-14.65.573c-3.71.145-6.834-2.818-6.979-6.62v-.005zm0-12.516c1.929-3.22 3.661-4.968 5.202-5.257 1.435-.263 6.461-.119 15.083.433a7.58 7.58 0 0 1 3.742 1.28c4.21 2.837 7.866 5.778 10.968 8.817m-29.994 1.62l3.842-3.931v7.878l-3.842-3.947z"
+        id="dpad_right" transform="matrix(-1 0 0 1 133 0)" />
+      <path
+        d="M34.894 0h15.212C53.914 0 57 3.012 57 6.73v.13l-.578 14.773a7.643 7.643 0 0 1-2.75 5.546l-7.968 6.664a5.015 5.015 0 0 1-6.408 0l-7.968-6.664a7.623 7.623 0 0 1-2.745-5.54l-.578-14.653C27.86 3.274 30.823.15 34.625.005L34.895 0zm-6.672 10.728l3.282-3.137a3.988 3.988 0 0 1 2.76-1.093h16.477c1.032 0 2.023.392 2.755 1.098l3.282 3.138M42.51 8.654l3.932 3.842h-7.88l3.948-3.843z"
+        id="dpad_top" />
+    </g>
+  </g>
+</svg>`; function S(e, n, r) { const l = t => { const m = Math.round(t).toString(16); return m.length == 1 ? "0" + m : m }; return `#${l(e)}${l(n)}${l(r)}` } function j(e, n, r, l, t) { const m = (e - n) / (r - n); return l + m * (t - l) } function h(e) { let n = e.replace("#", ""); return n.length === 3 && (n = n.replace(/./g, "$&$&")), { r: parseInt(n.substring(0, 2), 16), g: parseInt(n.substring(2, 4), 16), b: parseInt(n.substring(4, 6), 16) } } function $(e, n, r, l, t) { r = Math.max(0, Math.min(r, Math.sqrt(2))); const m = h(e), a = h(n), z = m.r + (a.r - m.r) * ((r - l) / (t - l)), i = m.g + (a.g - m.g) * ((r - l) / (t - l)), b = m.b + (a.b - m.b) * ((r - l) / (t - l)); return S(z, i, b) } function E(e, n = 1) { const { r, g: l, b: t } = h(e); return `rgba(${r},${l},${t},${n})` } const s = document.querySelector("#touch_text"); let p = 0, L = -1, d = null, M = null, H = null, y = null, f = null; function o(e) { return getComputedStyle(document.querySelector(":root")).getPropertyValue(e).trim() } let c = null, x = null, v = null, _ = null, g = null; const I = { 0: "button_bottom", 1: "button_right", 2: "button_left", 3: "button_top", 4: "l1", 5: "r1", 6: "l2", 7: "r2", 8: "share", 9: "setting", 10: "l3_ring", 11: "r3_ring", 12: "dpad_top", 13: "dpad_bottom", 14: "dpad_left", 15: "dpad_right", 16: "ps", 17: "touch_pad" }; function u(e, n, r, l) { const m = Math.abs(r) + Math.abs(l), a = j(l, -1, 1, 2, 1), z = r * a * 15, i = l * a * 15; Object.assign(e, { fillOpacity: 1, fill: m > c ? $(x, v, Math.sqrt(r * r + l * l), 0, 1) : "transparent", transform: m > c ? `translate(${z}px, ${i}px)` : null }), Object.assign(n, { fillOpacity: 1, fill: m > c ? _ : "transparent", transform: m > c ? `translate(${z}px, ${i}px)` : null }) } function G(e) { if (!d || !H) return; const [n, r, l, t] = e; u(d.style, M.style, n, r), u(H.style, y.style, l, t) } function k() { c = Number(o("--moveThreshold")), x = o("--joystick-start-color"), v = o("--joystick-end-color"), _ = o("--joystick-point"), g = o("--button-start-color"), f = o("--touch-pad-text"); const e = navigator.getGamepads()[p]; e && (G(e.axes), e.buttons.forEach((n, r) => { const l = I[r]; if (l) { let t = document.getElementById(l); if (l === "ld" && (t = document.getElementById("l3_ring")), !t) return; if (l === "touch_pad" && (n.pressed ? (s.children[0].textContent = f, s.classList.add("show_touch_pad_image")) : (s.children[0].textContent = "", s.classList.remove("show_touch_pad_image"))), !n.pressed) { t.style.fill = "transparent"; return } if (["l2", "r2"].includes(l)) { document.documentElement.style.setProperty(`--${l}-fill-color`, E(g, n.value)), document.querySelectorAll(`.${l}_linearGradient_stop`).forEach(m => { m.setAttribute("offset", `${Math.round(n.value * 100)}%`) }), t.style.fill = `url(#${l}_linearGradient)`; return } t.style.fill = "url(#button_fill_color)" } }), L = requestAnimationFrame(k)) } function B({ gamepad: e }) { document.getElementById("disconnected").innerHTML = "", s.children[0].textContent = "", d = document.getElementById("left_joystick"), M = document.getElementById("left_joystick_point"), H = document.getElementById("right_joystick"), y = document.getElementById("right_joystick_point"), p = e.index, k() } function P() { p = 0, document.getElementById("disconnected").innerHTML = '<tspan x="0" y="0">disconnected</tspan>', s.children[0].textContent = "", cancelAnimationFrame(L) } const q = document.getElementById("container"); q.innerHTML = w; function C() { const e = document.getElementById("touch_pad"), { top: n, left: r, width: l, height: t } = e.getBoundingClientRect(); Object.assign(document.querySelector("#touch_text").style, { top: `${n + t * .05}px`, height: `${t * .9}px`, left: `${r}px`, width: `${l}px` }) } C(); window.addEventListener("resize", C); window.addEventListener("gamepadconnected", B); window.addEventListener("gamepaddisconnected", P);
+  </script>
+  <style rel="stylesheet" crossorigin>
+    html,
+    body,
+    div,
+    span,
+    applet,
+    object,
+    iframe,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p,
+    blockquote,
+    pre,
+    a,
+    abbr,
+    acronym,
+    address,
+    big,
+    cite,
+    code,
+    del,
+    dfn,
+    em,
+    img,
+    ins,
+    kbd,
+    q,
+    s,
+    samp,
+    small,
+    strike,
+    strong,
+    sub,
+    sup,
+    tt,
+    var,
+    b,
+    u,
+    i,
+    center,
+    dl,
+    dt,
+    dd,
+    ol,
+    ul,
+    li,
+    fieldset,
+    form,
+    label,
+    legend,
+    table,
+    caption,
+    tbody,
+    tfoot,
+    thead,
+    tr,
+    th,
+    td,
+    article,
+    aside,
+    canvas,
+    details,
+    embed,
+    figure,
+    figcaption,
+    footer,
+    header,
+    hgroup,
+    menu,
+    nav,
+    output,
+    ruby,
+    section,
+    summary,
+    time,
+    mark,
+    audio,
+    video {
+      margin: 0;
+      padding: 0;
+      border: 0;
+      font-size: 100%;
+      font: inherit;
+      vertical-align: baseline
+    }
+
+    article,
+    aside,
+    details,
+    figcaption,
+    figure,
+    footer,
+    header,
+    hgroup,
+    menu,
+    nav,
+    section {
+      display: block
+    }
+
+    body {
+      line-height: 1
+    }
+
+    ol,
+    ul {
+      list-style: none
+    }
+
+    blockquote,
+    q {
+      quotes: none
+    }
+
+    blockquote:before,
+    blockquote:after,
+    q:before,
+    q:after {
+      content: "";
+      content: none
+    }
+
+    table {
+      border-collapse: collapse;
+      border-spacing: 0
+    }
+
+    :root {
+      --base-color: #c3c300;
+      --stroke-color: #aaa;
+      --bg-color: #0000004d;
+      --button-start-color: var(--base-color);
+      --button-end-color: #e3e3e3;
+      --joystick-start-color: var(--base-color);
+      --joystick-end-color: #591b13;
+      --joystick-point: #ffffff;
+      --moveThreshold: .09;
+      --touch_pad_dot_opacity: .2;
+      --touch-pad-text: 你干嘛, ~~哎哟;
+      --touch-pad-text-weight: 800;
+      --touch-pad-text-color: #e84118;
+      --touch-pad-text-size: 4;
+      --touch-pad-offset-x: 0;
+      --touch-pad-offset-y: 0;
+      --touch-pad-image-opacity: 1;
+      --touch-pad-image-url: url();
+      --touch-pad-image-offset-x: 0;
+      --touch-pad-image-offset-y: 0;
+      --touch-pad-image-height-percent: 100
+    }
+
+    html,
+    body {
+      width: 100%;
+      height: 100%
+    }
+
+    body {
+      background: transparent
+    }
+
+    #container {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative
+    }
+
+    #touch_text {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: calc(var(--touch-pad-text-size) * 1vmin);
+      color: var(--touch-pad-text-color);
+      font-weight: var(--touch-pad-text-weight)
+    }
+
+    #touch_text>p {
+      transform: translate(calc(var(--touch-pad-offset-x) * 1vmin), calc(var(--touch-pad-offset-y) * 1vmin))
+    }
+
+    .show_touch_pad_image:before {
+      opacity: var(--touch-pad-image-opacity);
+      content: " ";
+      display: block;
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: calc(var(--touch-pad-image-height-percent) * 1%);
+      background: var(--touch-pad-image-url);
+      background-position: center center;
+      background-size: contain;
+      background-repeat: no-repeat;
+      transform: translate(calc(var(--touch-pad-image-offset-x) * 1vmin), calc(var(--touch-pad-image-offset-y) * 1vmin))
+    }
+  </style>
+</head>
+
+<body>
+  <div id="container">
+  </div>
+  <div id="touch_text">
+    <p></p>
+  </div>
+</body>
+
+</html>

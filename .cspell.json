@@ -1,0 +1,9 @@
+{
+  "ignorePaths": [
+    "./*.json",
+    "./*.ts",
+    "./*.cjs"
+  ],
+  "words": [
+  ]
+}
