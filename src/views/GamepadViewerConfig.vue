@@ -181,6 +181,7 @@ function copyUrl() {
                 <el-form-item label="线框颜色">
                   <pick-colors
                     v-model:value="strokeColor.value"
+                    class="cursor-pointer"
                     :size="30"
                     show-alpha
                     @change="
@@ -193,6 +194,7 @@ function copyUrl() {
                 <el-form-item label="手柄背景色">
                   <pick-colors
                     v-model:value="bgColor.value"
+                    class="cursor-pointer"
                     :size="30"
                     show-alpha
                     @change="setStyleProperty(bgColor.name, bgColor.value)"
@@ -241,6 +243,7 @@ function copyUrl() {
                 <el-form-item label="按钮渐变开始">
                   <pick-colors
                     v-model:value="buttonStartColor.value"
+                    class="cursor-pointer"
                     :size="30"
                     show-alpha
                     @change="
@@ -256,6 +259,7 @@ function copyUrl() {
                 <el-form-item label="按钮渐变结束">
                   <pick-colors
                     v-model:value="buttonEndColor.value"
+                    class="cursor-pointer"
                     :size="30"
                     show-alpha
                     @change="
@@ -271,6 +275,7 @@ function copyUrl() {
                 <el-form-item label="摇杆渐变开始">
                   <pick-colors
                     v-model:value="joystickStartColor.value"
+                    class="cursor-pointer"
                     :size="30"
                     show-alpha
                     @change="
@@ -286,6 +291,7 @@ function copyUrl() {
                 <el-form-item label="摇杆渐变结束">
                   <pick-colors
                     v-model:value="joystickEndColor.value"
+                    class="cursor-pointer"
                     :size="30"
                     show-alpha
                     @change="
@@ -301,6 +307,7 @@ function copyUrl() {
                 <el-form-item label="摇杆上指向球">
                   <pick-colors
                     v-model:value="joystickPointColor.value"
+                    class="cursor-pointer"
                     :size="30"
                     show-alpha
                     @change="
@@ -374,6 +381,7 @@ function copyUrl() {
                 <el-form-item label="文字颜色">
                   <pick-colors
                     v-model:value="touchPadTextColor.value"
+                    class="cursor-pointer"
                     :size="30"
                     color-format="hex"
                     show-alpha
@@ -589,6 +597,7 @@ function copyUrl() {
           </p>
           <pick-colors
             v-model:value="previewBgColor"
+            class="cursor-pointer"
             :size="30"
             show-alpha
             color-format="hex"
