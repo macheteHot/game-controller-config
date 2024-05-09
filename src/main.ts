@@ -4,11 +4,8 @@ import './assets/main.css'
 import 'virtual:uno.css'
 
 import { createApp } from 'vue'
-import router from '@/router'
-import App from './App.vue'
+import GamePadViewerConfig from './GamePadViewerConfig.vue'
 
-const app = createApp(App)
-
-app.use(router)
+const app = createApp(GamePadViewerConfig)
 
 app.mount('#app')
