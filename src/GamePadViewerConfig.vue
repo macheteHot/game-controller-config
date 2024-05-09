@@ -233,7 +233,7 @@ function copyUrl() {
             </template>
             <el-row>
               <el-col :span="12">
-                <el-form-item label="手柄按下渐变开始色调">
+                <el-form-item label="按钮渐变开始">
                   <el-color-picker
                     v-model="buttonStartColor.value"
                     show-alpha
@@ -249,7 +249,7 @@ function copyUrl() {
                 </el-form-item>
               </el-col>
               <el-col :span="12">
-                <el-form-item label="手柄按下渐变结束色调">
+                <el-form-item label="按钮渐变结束">
                   <el-color-picker
                     v-model="buttonEndColor.value"
                     show-alpha
@@ -265,7 +265,7 @@ function copyUrl() {
                 </el-form-item>
               </el-col>
               <el-col :span="12">
-                <el-form-item label="摇杆渐变开始色调">
+                <el-form-item label="摇杆渐变开始">
                   <el-color-picker
                     v-model="joystickStartColor.value"
                     show-alpha
@@ -281,7 +281,7 @@ function copyUrl() {
                 </el-form-item>
               </el-col>
               <el-col :span="12">
-                <el-form-item label="摇杆渐变结束色调">
+                <el-form-item label="摇杆渐变结束">
                   <el-color-picker
                     v-model="joystickEndColor.value"
                     color-format="hex"
@@ -297,7 +297,7 @@ function copyUrl() {
                 </el-form-item>
               </el-col>
               <el-col :span="12">
-                <el-form-item label="摇杆上指向球的颜色">
+                <el-form-item label="摇杆上指向球">
                   <el-color-picker
                     v-model="joystickPointColor.value"
                     color-format="hex"
