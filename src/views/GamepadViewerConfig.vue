@@ -5,13 +5,8 @@ import { Help } from '@icon-park/vue-next'
 
 const previewIframe = ref<HTMLIFrameElement>()
 
-const iframeSrc =
-  import.meta.env.MODE === 'development'
-    ? 'dualsenseView.html'
-    : '../dualsenseView.html'
-
 const controllerUrl = new URL(location.href)
-controllerUrl.pathname = iframeSrc
+controllerUrl.pathname = '/obs'
 controllerUrl.search = ''
 
 const showPreviewBg = ref(true)
@@ -161,7 +156,7 @@ function copyUrl() {
 
 <template>
   <el-row
-    class="h-100vh w-100vw overflow-auto"
+    class="w-100vw overflow-auto"
     :style="{
       background: showPreviewBg
         ? 'url(https://api.dujin.org/bing/1920.php)'
@@ -388,13 +383,17 @@ function copyUrl() {
                   />
                 </el-form-item>
               </el-col>
-              <el-col :span="12">
+              <el-col :span="24">
                 <el-form-item label="文字大小">
-                  <el-input-number
+                  <el-slider
                     v-model="touchPadTextSize.value"
-                    :step="0.05"
+                    :step="0.01"
+                    :min="0"
+                    :max="15"
+                    show-input
                     :precision="2"
-                    @change="
+                    class="w-100p!"
+                    @input="
                       setStyleProperty(
                         touchPadTextSize.name,
                         touchPadTextSize.value
@@ -531,30 +530,34 @@ function copyUrl() {
             <template #header>
               <h3 class="fs-20">结果</h3>
             </template>
-            <div class="flex-center-center h-40 m-l-120">
-              <p>
-                控制器地址:<span class="m-l-20">{{
-                  controllerUrl.toString()
-                }}</span>
-              </p>
+            <div class="flex-flex-start-center m-l-120">
+              <span>建议obs 宽度</span>
+              <span class="c-red m-x-4 fw-bolder">1920</span>
+              <span>高度</span>
+              <span class="c-red m-x-4 fw-bolder">2000</span>
+              <span>提高采样率后再调整大小</span>
+            </div>
+            <div class="flex-flex-start-center h-40 m-l-120">
+              <span>控制器地址:</span>
+              <span class="c-red fw-bolder m-l-8">{{
+                controllerUrl.toString()
+              }}</span>
               <el-button class="m-l-auto" type="primary" @click="copyUrl">
                 复制
               </el-button>
             </div>
             <el-form-item label="CSS">
-              <el-input
-                v-model="cssResult"
-                readonly
-                type="textarea"
-                rows="10"
-              />
-              <el-button
-                class="m-t-10 m-l-auto"
-                type="primary"
-                @click="copyCssResult"
-              >
-                复制
-              </el-button>
+              <div class="flex-space-between-end w-100p lh-20 c-#5c5656">
+                <div
+                  style="white-space: pre-line"
+                  class="border-1 border-solid border-#AAA br-8 p-10 w-400 h-200 overflow-y-scroll"
+                >
+                  {{ cssResult }}
+                </div>
+                <el-button type="primary" @click="copyCssResult">
+                  复制
+                </el-button>
+              </div>
             </el-form-item>
           </el-card>
         </div>
@@ -588,8 +591,9 @@ function copyUrl() {
       >
         <iframe
           ref="previewIframe"
-          class="square-90p"
-          :src="iframeSrc"
+          style="aspect-ratio: 7 / 4.1"
+          class="w-90p overflow-hidden"
+          src="/obs"
         ></iframe>
       </div>
     </el-col>
@@ -597,5 +601,8 @@ function copyUrl() {
 </template>
 
 <style scoped>
+* {
+  user-select: none;
+}
 /**  */
 </style>

@@ -1,11 +1,14 @@
 import 'reset.css'
-import './assets/main.css'
+import '@/css/main.css'
 // eslint-disable-next-line import/no-unresolved
 import 'virtual:uno.css'
 
 import { createApp } from 'vue'
-import GamePadViewerConfig from './GamePadViewerConfig.vue'
+import router from './router'
 
-const app = createApp(GamePadViewerConfig)
+import App from './App.vue'
+
+const app = createApp(App)
+app.use(router)
 
 app.mount('#app')

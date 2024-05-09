@@ -1,0 +1,102 @@
+:root {
+  /* 按钮主色调 只用 hex 3位 或6位 */
+  --base-color: #c3c300;
+  /* 线框颜色 */
+  --stroke-color: #aaa;
+  /* 手柄背景色  */
+  --bg-color: #0000004d;
+  /* 按钮按下渐变开始色调 不改等于主色调 */
+  --button-start-color: #c3c300;
+  /* 按钮按下渐变结束色调 */
+  --button-end-color: #e3e3e3;
+  /* 摇杆渐变开始色调 不改等于主色调 */
+  --joystick-start-color: #c3c300;
+  /* 摇杆渐变结束色调 */
+  --joystick-end-color: #591b13;
+  /* 摇杆上指向球的颜色 */
+  --joystick-point: #ffffff;
+  /* 摇杆静默偏移量 (摇杆漂移调大) */
+  --moveThreshold: 0.09;
+  /* 触摸板装饰点透明度 0 为全透明(不显示) 1 为不透明 */
+  --touch_pad_dot_opacity: 0.2;
+  /* 触摸板文字 */
+  --touch-pad-text: 你干嘛, ~~哎哟;
+  /* 触摸板文字 */
+  --touch-pad-text-weight: 800;
+  /* 触摸板文字颜色 */
+  --touch-pad-text-color: #e84118;
+  /* 触摸板文字大小 */
+  --touch-pad-text-size: 4;
+  /* 文字偏移位置 x y 坐标 可以正负数 */
+  --touch-pad-offset-x: 0;
+  --touch-pad-offset-y: 0;
+  /* 触摸板图片透明度 0 为全透明(不显示) 1 为不透明 */
+  --touch-pad-image-opacity: 1;
+  /* 触摸板图片url */
+  --touch-pad-image-url: url('');
+  /* 图片偏移位置 x y 坐标 可以正负数 */
+  --touch-pad-image-offset-x: 0;
+  --touch-pad-image-offset-y: 0;
+  /* 图片大小百分比 */
+  --touch-pad-image-height-percent: 100;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  background: transparent;
+}
+
+#container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.touch_text {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(var(--touch-pad-text-size) * 1vw);
+  color: var(--touch-pad-text-color);
+  font-weight: var(--touch-pad-text-weight);
+}
+.touch_text > p {
+  text-wrap: nowrap;
+  transform: translate(
+    calc(var(--touch-pad-offset-x) * 1vw),
+    calc(var(--touch-pad-offset-y) * 1vw)
+  );
+}
+
+.show_touch_pad_image::before {
+  opacity: var(--touch-pad-image-opacity);
+  content: ' ';
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: calc(var(--touch-pad-image-height-percent) * 1%);
+  height: calc(var(--touch-pad-image-height-percent) * 1%);
+  background: var(--touch-pad-image-url);
+  background-position: center center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  transform: translate(
+    calc(var(--touch-pad-image-offset-x) * 1vw),
+    calc(var(--touch-pad-image-offset-y) * 1vw)
+  );
+}
+
+html,body,#app{
+  overflow: hidden;
+  user-select: none;
+}
