@@ -3,6 +3,11 @@ import { computed, reactive, ref } from 'vue'
 import { Help } from '@icon-park/vue-next'
 const previewIframe = ref<HTMLIFrameElement>()
 
+const iframeSrc =
+  import.meta.env.MODE === 'development'
+    ? 'dualsenseView.html'
+    : '../dualsenseView.html'
+
 const strokeColor = reactive({
   name: '--stroke-color',
   value: '#AAA'
@@ -529,7 +534,7 @@ function copyCssResult() {
         <iframe
           ref="previewIframe"
           class="square-100p"
-          src="dualsenseView.html"
+          :src="iframeSrc"
         ></iframe>
       </div>
     </el-col>
