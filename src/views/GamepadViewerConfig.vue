@@ -356,7 +356,7 @@ function copyUrl() {
                 <el-form-item v-loading="loadingUpdate" label="图片url">
                   <div class="flex-flex-start-center w-100p">
                     <el-input v-model="touchPadImageUrl.value" class="m-r-30 w-auto! flex-1" clearable />
-                    <el-button class="w-130! flex-shrink-0" type="primary" @click="uploadImage">上传</el-button>
+                    <el-button class="el-input-number" type="primary" @click="uploadImage">上传</el-button>
                   </div>
                 </el-form-item>
               </el-col>
