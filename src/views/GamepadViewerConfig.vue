@@ -171,12 +171,23 @@ async function uploadImage() {
       multiple: false
     })
     const imageFile = await fileHandle.getFile()
+    if (imageFile.size > 1 * 1024 * 1024) {
+      // max size 1m
+      ElMessage.error('图片应小于1Mb 或使用网络地址')
+      return
+    }
     const dataUrl = await readerAsDataUrl(imageFile)
     touchPadImageUrl.value = dataUrl
   } catch (error) {
+    if (error instanceof DOMException) {
+      // 用户取消了操作
+      return
+    }
+    console.error(error)
     ElMessage.error('图片处理失败')
+  } finally {
+    loadingUpdate.value = false
   }
-  loadingUpdate.value = false
 }
 
 const cssResult = computed(() => {
@@ -311,7 +322,7 @@ function copyUrl() {
               </el-col>
               <el-col :span="12">
                 <el-form-item label="文字">
-                  <el-input v-model="touchPadText.value" size="large" />
+                  <el-input v-model="touchPadText.value" />
                 </el-form-item>
               </el-col>
               <el-col :span="12">
@@ -343,8 +354,10 @@ function copyUrl() {
               </el-col>
               <el-col :span="24">
                 <el-form-item v-loading="loadingUpdate" label="图片url">
-                  <el-input v-model="touchPadImageUrl.value" clearable show-input class="w-418! m-r-30" />
-                  <el-button type="primary" @click="uploadImage">上传图片</el-button>
+                  <div class="flex-flex-start-center w-100p">
+                    <el-input v-model="touchPadImageUrl.value" class="m-r-30 w-auto! flex-1" clearable />
+                    <el-button class="w-130! flex-shrink-0" type="primary" @click="uploadImage">上传</el-button>
+                  </div>
                 </el-form-item>
               </el-col>
               <el-col :span="24">
