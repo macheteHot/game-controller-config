@@ -38,7 +38,7 @@
   --touch-pad-image-offset-x: 0;
   --touch-pad-image-offset-y: 0;
   /* 图片大小百分比 */
-  --touch-pad-image-height-percent: 100;
+  --touch-pad-image-size-percent: 100;
 }
 
 html,
@@ -84,8 +84,8 @@ body {
   position: absolute;
   left: 0;
   top: 0;
-  width: calc(var(--touch-pad-image-height-percent) * 1%);
-  height: calc(var(--touch-pad-image-height-percent) * 1%);
+  width: calc(var(--touch-pad-image-size-percent) * 1%);
+  height: calc(var(--touch-pad-image-size-percent) * 1%);
   background: var(--touch-pad-image-url);
   background-position: center center;
   background-size: contain;
