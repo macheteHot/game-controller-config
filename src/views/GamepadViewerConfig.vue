@@ -3,6 +3,7 @@ import PickColors from 'vue-pick-colors'
 import { computed, reactive, ref, watchEffect } from 'vue'
 import { Help } from '@icon-park/vue-next'
 import wechatImg from '@/assets/images/wechat.jpg'
+import customControllerImg from '@/assets/images/customController.png'
 const previewIframe = ref<HTMLIFrameElement>()
 
 const controllerUrl = new URL(location.href)
@@ -129,7 +130,10 @@ watchEffect(() => {
   setStyleProperty(touchPadOffsetX.name, touchPadOffsetX.value)
   setStyleProperty(touchPadOffsetY.name, touchPadOffsetY.value)
   setStyleProperty(touchPadImgOpacity.name, touchPadImgOpacity.value)
-  setStyleProperty(touchPadImageSizePercent.name, touchPadImageSizePercent.value)
+  setStyleProperty(
+    touchPadImageSizePercent.name,
+    touchPadImageSizePercent.value
+  )
   setStyleProperty(touchPadImageOffsetX.name, touchPadImageOffsetX.value)
   setStyleProperty(touchPadImageOffsetY.name, touchPadImageOffsetY.value)
 })
@@ -230,7 +234,9 @@ function copyUrl() {
   <el-row
     class="w-100vw h-100vh overflow-hidden"
     :style="{
-      background: showPreviewBg ? 'url(https://api.dujin.org/bing/1920.php)' : previewBgColor,
+      background: showPreviewBg
+        ? 'url(https://api.dujin.org/bing/1920.php)'
+        : previewBgColor,
       'background-size': 'cover',
       'background-position': 'center center',
       'background-repeat': 'no-repeat'
@@ -243,26 +249,48 @@ function copyUrl() {
             <template #header>
               <div class="flex-between-center">
                 <h3 class="fs-20">手柄配置</h3>
-                <p class="c-red fs-24 fw-bolder">只支持 chrome 请连接上手柄进行调试</p>
+                <p class="c-red fs-24 fw-bolder">
+                  只支持 chrome 请连接上手柄进行调试
+                </p>
               </div>
             </template>
             <el-row>
               <el-col :span="12">
                 <el-form-item label="线框颜色">
-                  <pick-colors v-model:value="strokeColor.value" class="cursor-pointer" :size="30" show-alpha />
+                  <pick-colors
+                    v-model:value="strokeColor.value"
+                    class="cursor-pointer"
+                    :size="30"
+                    show-alpha
+                  />
                 </el-form-item>
               </el-col>
               <el-col :span="12">
                 <el-form-item label="手柄背景色">
-                  <pick-colors v-model:value="bgColor.value" class="cursor-pointer" :size="30" show-alpha />
+                  <pick-colors
+                    v-model:value="bgColor.value"
+                    class="cursor-pointer"
+                    :size="30"
+                    show-alpha
+                  />
                 </el-form-item>
               </el-col>
               <el-col :span="24">
                 <el-form-item>
                   <template #label>
                     <p>静默偏移量</p>
-                    <el-tooltip class="box-item" effect="dark" content="调整摇杆检测灵敏度 当你轻触摇杆才亮是最合适的" placement="top">
-                      <help theme="outline" size="18" class="p-t-4 m-l-4" fill="#333" />
+                    <el-tooltip
+                      class="box-item"
+                      effect="dark"
+                      content="调整摇杆检测灵敏度 当你轻触摇杆才亮是最合适的"
+                      placement="top"
+                    >
+                      <help
+                        theme="outline"
+                        size="18"
+                        class="p-t-4 m-l-4"
+                        fill="#333"
+                      />
                     </el-tooltip>
                   </template>
                   <el-slider
@@ -272,7 +300,9 @@ function copyUrl() {
                     :max="1"
                     :step="0.01"
                     :precision="2"
-                    @input="setStyleProperty(moveThreshold.name, moveThreshold.value)"
+                    @input="
+                      setStyleProperty(moveThreshold.name, moveThreshold.value)
+                    "
                   />
                 </el-form-item>
               </el-col>
@@ -285,27 +315,52 @@ function copyUrl() {
             <el-row>
               <el-col :span="12">
                 <el-form-item label="按钮渐变开始">
-                  <pick-colors v-model:value="buttonStartColor.value" class="cursor-pointer" :size="30" show-alpha />
+                  <pick-colors
+                    v-model:value="buttonStartColor.value"
+                    class="cursor-pointer"
+                    :size="30"
+                    show-alpha
+                  />
                 </el-form-item>
               </el-col>
               <el-col :span="12">
                 <el-form-item label="按钮渐变结束">
-                  <pick-colors v-model:value="buttonEndColor.value" class="cursor-pointer" :size="30" show-alpha />
+                  <pick-colors
+                    v-model:value="buttonEndColor.value"
+                    class="cursor-pointer"
+                    :size="30"
+                    show-alpha
+                  />
                 </el-form-item>
               </el-col>
               <el-col :span="12">
                 <el-form-item label="摇杆渐变开始">
-                  <pick-colors v-model:value="joystickStartColor.value" class="cursor-pointer" :size="30" show-alpha />
+                  <pick-colors
+                    v-model:value="joystickStartColor.value"
+                    class="cursor-pointer"
+                    :size="30"
+                    show-alpha
+                  />
                 </el-form-item>
               </el-col>
               <el-col :span="12">
                 <el-form-item label="摇杆渐变结束">
-                  <pick-colors v-model:value="joystickEndColor.value" class="cursor-pointer" :size="30" show-alpha />
+                  <pick-colors
+                    v-model:value="joystickEndColor.value"
+                    class="cursor-pointer"
+                    :size="30"
+                    show-alpha
+                  />
                 </el-form-item>
               </el-col>
               <el-col :span="12">
                 <el-form-item label="摇杆上指向球">
-                  <pick-colors v-model:value="joystickPointColor.value" class="cursor-pointer" :size="30" show-alpha />
+                  <pick-colors
+                    v-model:value="joystickPointColor.value"
+                    class="cursor-pointer"
+                    :size="30"
+                    show-alpha
+                  />
                 </el-form-item>
               </el-col>
             </el-row>
@@ -317,7 +372,14 @@ function copyUrl() {
             <el-row>
               <el-col :span="24">
                 <el-form-item label="装饰点透明度">
-                  <el-slider v-model="touchPadDotOpacity.value" :min="0" :max="1" :step="0.001" :precision="2" show-input />
+                  <el-slider
+                    v-model="touchPadDotOpacity.value"
+                    :min="0"
+                    :max="1"
+                    :step="0.001"
+                    :precision="2"
+                    show-input
+                  />
                 </el-form-item>
               </el-col>
               <el-col :span="12">
@@ -328,56 +390,128 @@ function copyUrl() {
               <el-col :span="12">
                 <el-form-item label="触摸板字重">
                   <el-select v-model="touchPadTextWeight.value">
-                    <el-option v-for="item in [100, 200, 300, 400, 500, 600, 700, 800, 900]" :key="item" :label="item" :value="item" />
+                    <el-option
+                      v-for="item in [
+                        100, 200, 300, 400, 500, 600, 700, 800, 900
+                      ]"
+                      :key="item"
+                      :label="item"
+                      :value="item"
+                    />
                   </el-select>
                 </el-form-item>
               </el-col>
               <el-col :span="12">
                 <el-form-item label="文字颜色">
-                  <pick-colors v-model:value="touchPadTextColor.value" class="cursor-pointer" :size="30" color-format="hex" show-alpha />
+                  <pick-colors
+                    v-model:value="touchPadTextColor.value"
+                    class="cursor-pointer"
+                    :size="30"
+                    color-format="hex"
+                    show-alpha
+                  />
                 </el-form-item>
               </el-col>
               <el-col :span="24">
                 <el-form-item label="文字大小">
-                  <el-slider v-model="touchPadTextSize.value" :step="0.01" :min="0" :max="15" show-input :precision="2" class="w-100p!" />
+                  <el-slider
+                    v-model="touchPadTextSize.value"
+                    :step="0.01"
+                    :min="0"
+                    :max="15"
+                    show-input
+                    :precision="2"
+                    class="w-100p!"
+                  />
                 </el-form-item>
               </el-col>
               <el-col :span="24">
                 <el-form-item label="文字偏移位置 x">
-                  <el-slider v-model="touchPadOffsetX.value" show-input :step="0.1" :min="-50" :max="50" :precision="2" />
+                  <el-slider
+                    v-model="touchPadOffsetX.value"
+                    show-input
+                    :step="0.1"
+                    :min="-50"
+                    :max="50"
+                    :precision="2"
+                  />
                 </el-form-item>
               </el-col>
               <el-col :span="24">
                 <el-form-item label="文字偏移位置 y">
-                  <el-slider v-model="touchPadOffsetY.value" show-input :step="0.1" :min="-50" :max="50" :precision="2" />
+                  <el-slider
+                    v-model="touchPadOffsetY.value"
+                    show-input
+                    :step="0.1"
+                    :min="-50"
+                    :max="50"
+                    :precision="2"
+                  />
                 </el-form-item>
               </el-col>
               <el-col :span="24">
                 <el-form-item v-loading="loadingUpdate" label="图片url">
                   <div class="flex-flex-start-center w-100p">
-                    <el-input v-model="touchPadImageUrl.value" class="m-r-30 w-auto! flex-1" clearable />
-                    <el-button class="el-input-number" type="primary" @click="uploadImage">上传</el-button>
+                    <el-input
+                      v-model="touchPadImageUrl.value"
+                      class="m-r-30 w-auto! flex-1"
+                      clearable
+                    />
+                    <el-button
+                      class="el-input-number"
+                      type="primary"
+                      @click="uploadImage"
+                      >上传</el-button
+                    >
                   </div>
                 </el-form-item>
               </el-col>
               <el-col :span="24">
                 <el-form-item label="图片透明度">
-                  <el-slider v-model="touchPadImgOpacity.value" show-input :step="0.01" :min="0" :max="1" :precision="2" />
+                  <el-slider
+                    v-model="touchPadImgOpacity.value"
+                    show-input
+                    :step="0.01"
+                    :min="0"
+                    :max="1"
+                    :precision="2"
+                  />
                 </el-form-item>
               </el-col>
               <el-col :span="24">
                 <el-form-item label="图片大小百分比">
-                  <el-slider v-model="touchPadImageSizePercent.value" show-input :step="0.1" :min="0" :max="300" :precision="2" />
+                  <el-slider
+                    v-model="touchPadImageSizePercent.value"
+                    show-input
+                    :step="0.1"
+                    :min="0"
+                    :max="300"
+                    :precision="2"
+                  />
                 </el-form-item>
               </el-col>
               <el-col :span="24">
                 <el-form-item label="图片偏移位置 x">
-                  <el-slider v-model="touchPadImageOffsetX.value" :min="-50" :max="50" :step="0.01" :precision="2" show-input />
+                  <el-slider
+                    v-model="touchPadImageOffsetX.value"
+                    :min="-50"
+                    :max="50"
+                    :step="0.01"
+                    :precision="2"
+                    show-input
+                  />
                 </el-form-item>
               </el-col>
               <el-col :span="24">
                 <el-form-item label="图片偏移位置 y">
-                  <el-slider v-model="touchPadImageOffsetY.value" show-input :min="-50" :max="50" :step="0.01" :precision="2" />
+                  <el-slider
+                    v-model="touchPadImageOffsetY.value"
+                    show-input
+                    :min="-50"
+                    :max="50"
+                    :step="0.01"
+                    :precision="2"
+                  />
                 </el-form-item>
               </el-col>
             </el-row>
@@ -395,15 +529,24 @@ function copyUrl() {
             </div>
             <div class="flex-flex-start-center h-40 m-l-120">
               <span>控制器地址:</span>
-              <span class="c-red fw-bolder m-l-8">{{ controllerUrl.toString() }}</span>
-              <el-button class="m-l-auto" type="primary" @click="copyUrl"> 复制 </el-button>
+              <span class="c-red fw-bolder m-l-8">{{
+                controllerUrl.toString()
+              }}</span>
+              <el-button class="m-l-auto" type="primary" @click="copyUrl">
+                复制
+              </el-button>
             </div>
             <el-form-item label="CSS">
               <div class="flex-space-between-end w-100p lh-20 c-#5c5656">
-                <div style="white-space: pre-line" class="border-1 border-solid border-#AAA br-8 p-10 w-400 h-200 overflow-y-scroll">
+                <div
+                  style="white-space: pre-line"
+                  class="border-1 border-solid border-#AAA br-8 p-10 w-400 h-200 overflow-y-scroll"
+                >
                   {{ cssResult }}
                 </div>
-                <el-button type="primary" @click="copyCssResult"> 复制 </el-button>
+                <el-button type="primary" @click="copyCssResult">
+                  复制
+                </el-button>
               </div>
             </el-form-item>
           </el-card>
@@ -411,25 +554,60 @@ function copyUrl() {
             <template #header>
               <h3 class="fs-20">赞助 Donate</h3>
             </template>
-            <p class="m-b-8">如果你喜欢的作品 可以请我喝一杯咖啡☕️</p>
-            <img :src="wechatImg" class="w-200" />
+            <div class="flex-flex-start-center">
+              <div class="flex-direction-column flex-flex-start-center">
+                <p class="m-b-8">如果你喜欢的作品 可以请我喝一杯咖啡☕️</p>
+                <img :src="wechatImg" class="w-200" />
+              </div>
+              <div
+                class="m-l-8 flex-flex-start-center flex-direction-column gap-8"
+              >
+                <p>更多定制化需求 欢迎联系</p>
+                <a
+                  href="mailto:gasser_heralds_0a@icloud.com?subject=定制手柄需求"
+                  type="email"
+                  >gasser_heralds_0a@icloud.com</a
+                >
+                <img :src="customControllerImg" class="w-400" />
+              </div>
+            </div>
           </el-card>
         </div>
       </el-form>
     </el-col>
     <el-col :span="14">
-      <div class="pos-fixed z-3 bg-#0000004d t-12 br-8 p-8 d-flex flex-column gap-8">
+      <div
+        class="pos-fixed z-3 bg-#0000004d t-12 br-8 p-8 d-flex flex-column gap-8"
+      >
         <div class="flex-flex-start-center gap-24">
-          <p class="c-#FFF fw-bolder fs-18 text-align-right select-none">背景图</p>
+          <p class="c-#FFF fw-bolder fs-18 text-align-right select-none">
+            背景图
+          </p>
           <el-switch v-model="showPreviewBg" />
         </div>
         <div v-show="!showPreviewBg" class="flex-flex-start-center gap-24">
-          <p class="c-#FFF fw-bolder fs-18 text-align-right select-none">背景色</p>
-          <pick-colors v-model:value="previewBgColor" class="cursor-pointer" :size="30" show-alpha color-format="hex" />
+          <p class="c-#FFF fw-bolder fs-18 text-align-right select-none">
+            背景色
+          </p>
+          <pick-colors
+            v-model:value="previewBgColor"
+            class="cursor-pointer"
+            :size="30"
+            show-alpha
+            color-format="hex"
+          />
         </div>
       </div>
-      <div class="pos-fixed h-100vh flex-center-center" style="width: calc(calc(14 / 24) * 100%)">
-        <iframe ref="previewIframe" style="aspect-ratio: 7 / 4.1" class="w-90p overflow-hidden" src="/obs"></iframe>
+      <div
+        class="pos-fixed h-100vh flex-center-center"
+        style="width: calc(calc(14 / 24) * 100%)"
+      >
+        <iframe
+          ref="previewIframe"
+          style="aspect-ratio: 7 / 4.1"
+          class="w-90p overflow-hidden"
+          src="/obs"
+        ></iframe>
       </div>
     </el-col>
   </el-row>
