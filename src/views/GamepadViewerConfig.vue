@@ -556,7 +556,7 @@ function copyUrl() {
             </template>
             <div class="flex-flex-start-center">
               <div class="flex-direction-column flex-flex-start-center">
-                <p class="m-b-8">如果你喜欢的作品 可以请我喝一杯咖啡☕️</p>
+                <p class="m-b-8">如果你喜欢我的作品 可以请我喝一杯咖啡☕️</p>
                 <img :src="wechatImg" class="w-200" />
               </div>
               <div
