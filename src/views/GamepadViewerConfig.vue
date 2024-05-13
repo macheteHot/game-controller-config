@@ -10,6 +10,30 @@ const controllerUrl = new URL(location.href)
 controllerUrl.pathname = '/obs'
 controllerUrl.search = ''
 
+const bgImageList = ref([])
+
+const bgImageCurrentPage = ref(1)
+
+const bgImageUrl = computed(
+  () =>
+    bgImageList.value[bgImageCurrentPage.value - 1] ??
+    bgImageList.value[bgImageList.value.length - 1] ??
+    ''
+)
+
+async function getImageList() {
+  console.log(import.meta.env.MODE)
+  const res = await fetch(
+    import.meta.env.MODE === 'development'
+      ? 'http://localhost:8787/getBingDayOfImageList'
+      : 'https://api.gamepadobs.com/getBingDayOfImageList'
+  )
+  const data = await res.json()
+  bgImageList.value = data
+}
+
+getImageList()
+
 const showPreviewBg = ref(true)
 const previewBgColor = ref('#FFF')
 
@@ -234,9 +258,7 @@ function copyUrl() {
   <el-row
     class="w-100vw h-100vh overflow-hidden"
     :style="{
-      background: showPreviewBg
-        ? 'url(https://api.dujin.org/bing/1920.php)'
-        : previewBgColor,
+      background: showPreviewBg ? `url(${bgImageUrl})` : previewBgColor,
       'background-size': 'cover',
       'background-position': 'center center',
       'background-repeat': 'no-repeat'
@@ -585,6 +607,16 @@ function copyUrl() {
           </p>
           <el-switch v-model="showPreviewBg" />
         </div>
+        <el-pagination
+          v-show="showPreviewBg"
+          v-model:current-page="bgImageCurrentPage"
+          small
+          background
+          :page-size="1"
+          layout="pager"
+          :pager-count="11"
+          :total="bgImageList.length"
+        />
         <div v-show="!showPreviewBg" class="flex-flex-start-center gap-24">
           <p class="c-#FFF fw-bolder fs-18 text-align-right select-none">
             背景色
